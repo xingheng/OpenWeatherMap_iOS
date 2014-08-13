@@ -7,12 +7,16 @@
 //
 
 #import "OWMAppDelegate.h"
+#import "OWMWebRequest.h"
 
 @implementation OWMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    OWMWebRequest *owm = [[OWMWebRequest alloc] init];
+    
     return YES;
 }
 							
