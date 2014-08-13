@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 
+typedef enum _OWMRequestKind {
+    OWMRequestWeather,
+    OWMRequestForecast
+} OWMRequestKind;
+
 @interface OWMWebRequest : NSObject
+
+@property (assign, nonatomic) NSString *cityName;
+@property (assign, nonatomic) OWMRequestKind requestKind;
 
 @end

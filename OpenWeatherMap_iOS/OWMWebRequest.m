@@ -9,6 +9,7 @@
 #import "OWMWebRequest.h"
 #import <JSONModel/JSONModel.h>
 #import "OWMWeatherInfo.h"
+#import "OWMForecastInfo.h"
 
 NSString * const kOWMRequestPrefix = @"http://api.openweathermap.org/data/2.5/";
 
@@ -18,6 +19,9 @@ NSString * const kOWMRequestPrefix = @"http://api.openweathermap.org/data/2.5/";
 {
     if (self = [super init])
     {
+        self.cityName = @"beijing";
+        self.requestKind = OWMRequestForecast;
+        
         // For test
         [self getResponse];
         
@@ -27,15 +31,24 @@ NSString * const kOWMRequestPrefix = @"http://api.openweathermap.org/data/2.5/";
 
 - (NSString *)generateRequestURL
 {
-    NSString *request = [NSString stringWithFormat:@"%@weather?q=%@", kOWMRequestPrefix, @"beijing"];
+    NSString *request = nil;
+    
+    switch (self.requestKind) {
+        case OWMRequestWeather:
+            request = [NSString stringWithFormat:@"%@weather?q=%@", kOWMRequestPrefix, self.cityName];
+            break;
+        case OWMRequestForecast:
+            request = [NSString stringWithFormat:@"%@forecast?q=%@", kOWMRequestPrefix, self.cityName];
+            break;
+    }
     return request;
 }
 
-- (void)getResponse
+- (JSONModel *)getResponse
 {
+    __block JSONModel *result = nil;
     NSString *request = [self generateRequestURL];
     
-    // Test AFHTTPRequestOperationManager
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:request
       parameters:nil
@@ -44,13 +57,22 @@ NSString * const kOWMRequestPrefix = @"http://api.openweathermap.org/data/2.5/";
              
              NSError *err = nil;
              
-             OWMWeatherInfo *model = [[OWMWeatherInfo alloc] initWithDictionary:responseObject error:&err];
-             NSLog(@"%@", model);
+             switch (self.requestKind) {
+                 case OWMRequestWeather:
+                     result = [[OWMWeatherInfo alloc] initWithDictionary:responseObject error:&err];
+                     break;
+                 case OWMRequestForecast:
+                     result = [[OWMForecastInfo alloc] initWithDictionary:responseObject error:&err];
+                     break;
+             }
+             NSLog(@"%@", result);
              
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
          }];
+    
+    return result;
 }
 
 @end

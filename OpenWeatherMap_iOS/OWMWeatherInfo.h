@@ -74,7 +74,7 @@
 
 @interface OWMWind : JSONModel
 
-@property (assign, nonatomic) int deg;
-@property (assign, nonatomic) int speed;
+@property (assign, nonatomic) float deg;
+@property (assign, nonatomic) float speed;
 
 @end
