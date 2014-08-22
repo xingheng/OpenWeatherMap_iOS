@@ -52,9 +52,9 @@
 
 @interface OWMWeatherSys : JSONModel
 
-@property (assign, nonatomic) NSString *country;
+@property (strong, nonatomic) NSString *country;
 @property (assign, nonatomic) int ID;
-@property (assign, nonatomic) NSString *message;
+@property (strong, nonatomic) NSString *message;
 @property (assign, nonatomic) int sunrise;
 @property (assign, nonatomic) int sunset;
 @property (assign, nonatomic) int type;
@@ -64,10 +64,10 @@
 
 @interface OWMWeatherDetail : JSONModel
 
-@property (assign, nonatomic) NSString *description;
-@property (assign, nonatomic) NSString *icon;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *icon;
 @property (assign, nonatomic) int ID;
-@property (assign, nonatomic) NSString *main;
+@property (strong, nonatomic) NSString *main;
 
 @end
 

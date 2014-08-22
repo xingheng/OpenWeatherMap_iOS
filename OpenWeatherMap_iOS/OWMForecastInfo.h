@@ -33,9 +33,9 @@
 @interface OWMCity : JSONModel
 
 @property (strong, nonatomic) OWMCoordinary *coord;
-@property (assign, nonatomic) NSString *country;
+@property (strong, nonatomic) NSString *country;
 @property (assign, nonatomic) int ID;
-@property (assign, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *name;
 @property (assign, nonatomic) int population;
 @property (assign, nonatomic) int sys_population;
 

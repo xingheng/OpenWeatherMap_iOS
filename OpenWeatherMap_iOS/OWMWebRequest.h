@@ -16,7 +16,7 @@ typedef enum _OWMRequestKind {
 
 @interface OWMWebRequest : NSObject
 
-@property (assign, nonatomic) NSString *cityName;
+@property (weak, nonatomic) NSString *cityName;
 @property (assign, nonatomic) OWMRequestKind requestKind;
 
 @end

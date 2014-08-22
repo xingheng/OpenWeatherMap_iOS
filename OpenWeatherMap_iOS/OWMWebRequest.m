@@ -53,7 +53,7 @@ NSString * const kOWMRequestPrefix = @"http://api.openweathermap.org/data/2.5/";
     [manager GET:request
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             NSLog(@"JSON: %@", responseObject);
+             //NSLog(@"JSON: %@", responseObject);
              
              NSError *err = nil;
              
@@ -65,7 +65,7 @@ NSString * const kOWMRequestPrefix = @"http://api.openweathermap.org/data/2.5/";
                      result = [[OWMForecastInfo alloc] initWithDictionary:responseObject error:&err];
                      break;
              }
-             NSLog(@"%@", result);
+             //NSLog(@"%@", result);
              
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
