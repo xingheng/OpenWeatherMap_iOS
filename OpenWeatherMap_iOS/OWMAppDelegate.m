@@ -13,9 +13,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    
     OWMWebRequest *owm = [[OWMWebRequest alloc] init];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+//    MainViewController *mainVC = [MainViewController new];
+//    UserCenterViewController *userVC = [UserCenterViewController new];
+//    UserCenterViewController *userVC2 = [UserCenterViewController new];
+//    
+//    UITabBarController *tabBarVC = [UITabBarController new];
+//    tabBarVC.tabBar.translucent = NO;
+//    tabBarVC.viewControllers = @[mainVC, userVC, userVC2];
+//    
+//    UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:tabBarVC];
+//    self.window.rootViewController = naviController;
+//    
+//    // make the content views' vertical offset in view controller starts from navigation bar's bottom instead of top screen.
+//    naviController.navigationBar.translucent = NO;
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

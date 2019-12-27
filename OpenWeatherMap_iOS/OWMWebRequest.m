@@ -20,7 +20,7 @@ NSString * const kOWMRequestPrefix = @"http://api.openweathermap.org/data/2.5/";
     if (self = [super init])
     {
         self.cityName = @"beijing";
-        self.requestKind = OWMRequestForecast;
+        self.requestKind = OWMRequestWeather;
         
         // For test
         [self getResponse];
